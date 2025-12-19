@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.function.Supplier;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FilenameUtils;
+import org.jspecify.annotations.NonNull;
 import org.owasp.wrongsecrets.Challenges;
 import org.owasp.wrongsecrets.asciidoc.TemplateGenerator;
 import org.owasp.wrongsecrets.challenges.Challenge;
@@ -44,7 +45,7 @@ public class ChallengeConfig {
       implements Converter<String, TextWithFileLocation> {
 
     @Override
-    public TextWithFileLocation convert(String source) {
+    public TextWithFileLocation convert(@NonNull String source) {
       return new TextWithFileLocation(source, read(source));
     }
 
@@ -62,7 +63,7 @@ public class ChallengeConfig {
   private record StringToChallengeNameConverter() implements Converter<String, ChallengeName> {
 
     @Override
-    public ChallengeName convert(String name) {
+    public ChallengeName convert(@NonNull String name) {
       return new ChallengeName(name, name.strip().replace(" ", "-").toLowerCase());
     }
   }

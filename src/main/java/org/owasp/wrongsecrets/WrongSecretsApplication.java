@@ -16,7 +16,7 @@ import org.springframework.web.client.RestTemplate;
 @EnableConfigurationProperties({Vaultpassword.class, Vaultinjected.class})
 public class WrongSecretsApplication {
 
-  public static void main(String[] args) {
+  static void main(String[] args) {
     SpringApplication.run(WrongSecretsApplication.class, args);
   }
 

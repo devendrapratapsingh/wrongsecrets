@@ -63,7 +63,7 @@ public class Challenge56 implements Challenge {
       }
     }
 
-    log.info("secret is: " + actualSecret);
+      log.info("secret is: {}", actualSecret);
     return actualSecret;
   }
 }

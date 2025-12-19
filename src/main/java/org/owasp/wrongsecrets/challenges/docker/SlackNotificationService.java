@@ -3,6 +3,8 @@ package org.owasp.wrongsecrets.challenges.docker;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Optional;
+
+import lombok.Getter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,16 +21,14 @@ public class SlackNotificationService {
   private static final Logger logger = LoggerFactory.getLogger(SlackNotificationService.class);
 
   private final RestTemplate restTemplate;
-  private final ObjectMapper objectMapper;
-  private final Optional<Challenge59> challenge59;
+    private final Optional<Challenge59> challenge59;
 
   public SlackNotificationService(
       RestTemplate restTemplate,
       ObjectMapper objectMapper,
       @Autowired(required = false) Challenge59 challenge59) {
     this.restTemplate = restTemplate;
-    this.objectMapper = objectMapper;
-    this.challenge59 = Optional.ofNullable(challenge59);
+      this.challenge59 = Optional.ofNullable(challenge59);
   }
 
   /**
@@ -94,6 +94,7 @@ public class SlackNotificationService {
   }
 
   /** Simple record for Slack message payload. */
+  @Getter
   public static class SlackMessage {
     @JsonProperty("text")
     private final String text;
@@ -102,8 +103,5 @@ public class SlackNotificationService {
       this.text = text;
     }
 
-    public String getText() {
-      return text;
-    }
   }
 }

@@ -258,7 +258,7 @@ public class BinaryExecutionHelper {
       try (BufferedReader in =
           new BufferedReader(new InputStreamReader(pr.getInputStream(), StandardCharsets.UTF_8))) {
         String result = in.readLine();
-        log.info("result of xatr operation: " + result);
+          log.info("result of xatr operation: {}", result);
       } catch (IOException e) {
         log.warn("error while reading executable file", e);
       }
